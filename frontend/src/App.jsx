@@ -1,36 +1,36 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import Navbar from "./components/Navbar";
 
 function App() {
-  const [message, setMessage] = useState("Connecting...");
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/v1/health")
-      .then((response) => {
-        setMessage(
-          `${response.data.application} API is ${response.data.status}`
-        );
-      })
-      .catch(() => {
-        setError("Backend connection failed");
-      });
-  }, []);
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white">
-      <h1 className="text-5xl font-bold text-blue-400">
-        ZOVION
-      </h1>
+    <div className="min-h-screen">
 
-      <p className="mt-4 text-slate-300">
-        Local Services Marketplace
-      </p>
+      <Navbar />
 
-      <div className="mt-8 rounded-xl bg-slate-800 p-6">
-        {error ? error : message}
-      </div>
+      <main
+        id="home"
+        className="flex min-h-[70vh] items-center justify-center px-5"
+      >
+        <div className="text-center">
+
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-brand">
+            Welcome to Zovion
+          </p>
+
+          <h1 className="text-4xl font-bold text-heading md:text-6xl">
+            Your Services.
+            <br />
+            <span className="text-brand">
+              Your Trusted Professionals.
+            </span>
+          </h1>
+
+          <p className="mx-auto mt-5 max-w-xl text-gray-500">
+            Discover reliable local professionals for your everyday needs.
+          </p>
+
+        </div>
+      </main>
+
     </div>
   );
 }
