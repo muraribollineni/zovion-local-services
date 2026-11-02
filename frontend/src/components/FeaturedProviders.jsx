@@ -19,7 +19,7 @@ const providers = [
     location: "Vijayawada",
     price: "₹299",
     image:
-      "https://images.unsplash.com/photo-1621905251189-4e4e0c3c3c3c?w=600",
+      "https://images.pexels.com/photos/8005397/pexels-photo-8005397.jpeg",
   },
   {
     id: 2,
@@ -106,11 +106,14 @@ function FeaturedProviders() {
               <div className="relative h-60 overflow-hidden bg-gray-100">
 
                 <img
-                  src={provider.image}
-                  alt={provider.profession}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                />
+  src={provider.image}
+  alt={provider.profession}
+  loading="lazy"
+  className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
+  onError={(e) => {
+    e.currentTarget.style.display = "none";
+  }}
+/>
 
                 <div className="absolute left-4 top-4 rounded-full bg-white px-3 py-2 text-xs font-bold text-brand shadow-sm">
                   {provider.category}
